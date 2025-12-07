@@ -3,70 +3,446 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spiritual Teachings</title>
+    <title>Sat-Chit-Ananda | Advaita Teachings</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Georgia', serif;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fef9f3;
+            background: linear-gradient(135deg, #fef9f3 0%, #f5e6d3 100%);
             color: #333;
+            min-height: 100vh;
         }
-        h1 {
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
             text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
             color: #8b4513;
-            font-size: 2.5em;
+            font-size: 2.8em;
             margin-bottom: 10px;
         }
-        .subtitle {
-            text-align: center;
+
+        .site-subtitle {
             color: #666;
             font-style: italic;
-            margin-bottom: 40px;
+            font-size: 1.2em;
         }
-        .pdf-list {
-            list-style: none;
-            padding: 0;
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
-        .pdf-item {
-            margin: 15px 0;
-            padding: 15px;
+
+        .tab {
+            padding: 15px 30px;
             background: white;
-            border-left: 4px solid #d4a373;
-            border-radius: 4px;
-            transition: transform 0.2s;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-family: 'Georgia', serif;
+            color: #666;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .pdf-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+        .tab:hover {
+            background: #f5e6d3;
+            color: #8b4513;
         }
-        .pdf-item a {
+
+        .tab.active {
+            background: #8b4513;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .tab-content {
+            display: none;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 6px 16px rgba(139, 69, 19, 0.3);
+        }
+
+        .quote {
+            font-size: 1.5em;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .quote-author {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .philosophy-section {
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .philosophy-section h2 {
+            color: #8b4513;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .philosophy-section p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .gurus-section {
+            margin-top: 40px;
+        }
+
+        .gurus-section h2 {
+            color: #8b4513;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .guru-card {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            align-items: center;
+        }
+
+        .guru-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: contain;
+            border: 4px solid #d4a373;
+            flex-shrink: 0;
+        }
+
+        .guru-image-placeholder {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4a373 0%, #c9a87c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            color: white;
+            flex-shrink: 0;
+            border: 4px solid #d4a373;
+        }
+
+        .guru-info h3 {
+            color: #8b4513;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .guru-info p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .resource-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .resource-item {
+            padding: 20px;
+            background: white;
+            border-left: 5px solid #d4a373;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .resource-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-left-color: #8b4513;
+        }
+
+        .resource-item a {
             text-decoration: none;
             color: #8b4513;
-            font-size: 1.2em;
+            font-size: 1.3em;
             font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
         }
-        .pdf-item a:hover {
+
+        .resource-item a:hover {
             color: #a0522d;
+        }
+
+        .resource-description {
+            color: #666;
+            font-size: 1em;
+            font-style: italic;
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .contact-section h2 {
+            color: #8b4513;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .contact-info {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        .contact-info a {
+            color: #8b4513;
+            text-decoration: none;
+            padding: 15px 30px;
+            background: white;
+            border-radius: 8px;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .contact-info a:hover {
+            background: #8b4513;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .om-symbol {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .guru-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .quote {
+                font-size: 1.2em;
+            }
+
+            .tab {
+                padding: 12px 20px;
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>🕉️ Spiritual Teachings</h1>
-    <p class="subtitle">Sat-Chit-Ananda: Existence, Consciousness, Bliss</p>
-    
-    <ul class="pdf-list">
-        <li class="pdf-item">
-            <a href="SivaManasaPooja.pdf" target="_blank">📖 Siva Manasa Pooja</a>
-        </li>
-<!--         <li class="pdf-item">
-            <a href="your-pdf-name-2.pdf" target="_blank">📖 Title of Your Second Teaching</a>
-        </li>
-        <li class="pdf-item">
-            <a href="your-pdf-name-3.pdf" target="_blank">📖 Title of Your Third Teaching</a>
-        </li> -->
-        <!-- Add more PDFs here -->
-    </ul>
+    <div class="container">
+        <header>
+            <h1>🕉️ Sat-Chit-Ananda</h1>
+            <p class="site-subtitle">Existence • Consciousness • Bliss</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" onclick="openTab(event, 'home')">Home</button>
+            <button class="tab" onclick="openTab(event, 'articles')">Reflections</button>
+            <button class="tab" onclick="openTab(event, 'contact')">Contact</button>
+        </div>
+
+        <!-- HOME TAB -->
+        <div id="home" class="tab-content active">
+            <div class="quote-section">
+                <div class="quote">
+                    "Brahma Satyam Jagan Mithya, Jivo Brahmaiva Na Parah"
+                </div>
+                <div class="quote-author">
+                    Brahman alone is real, the world is illusory, and the individual soul is non-different from Brahman
+                    <br>— Adi Shankaracharya
+                </div>
+            </div>
+
+            <div class="philosophy-section">
+                <h2>Advaita Vedanta</h2>
+                <p>
+                    Welcome to this space dedicated to the timeless wisdom of Advaita Vedanta—the non-dualistic philosophy that reveals the fundamental unity of all existence. Here, we explore the profound teaching that the ultimate reality, Brahman, is one without a second, and that our true nature is identical with this infinite consciousness.
+                </p>
+                <p>
+                    Through the grace of the eternal lineage of realized masters, these teachings illuminate the path from ignorance to knowledge, from limitation to freedom, from the illusion of separation to the recognition of our true Self as Sat-Chit-Ananda—Existence, Consciousness, and Bliss Absolute.
+                </p>
+            </div>
+
+            <div class="gurus-section">
+                <h2>Gratitude to my Gurus</h2>
+                
+                <div class="guru-card">
+                    <img src="images/baba.jpg" alt="Shirdi Sai Baba" class="guru-image">
+                    <!-- If image not yet added, replace above line with: <div class="guru-image-placeholder">🙏</div> -->
+                    <div class="guru-info">
+                        <h3>Shirdi Sai Baba</h3>
+                        <p>
+                            Though I place His photo and name here, He is the unseen wirepuller orchestrating everything in my life. It is through His sheer grace that I find myself on this path, encountering great masters, and discovering the teachings that resonate with my soul. Every step of this journey, every moment of understanding, flows from His infinite compassion and guidance.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="guru-card">
+                    <img src="images/sarma.png" alt="Poduri Venkataramana Sarma" class="guru-image">
+                    <!-- If image not yet added, replace above line with: <div class="guru-image-placeholder">🙏</div> -->
+                    <div class="guru-info">
+                        <h3>Poduri Venkataramana Sarma</h3>
+                        <p>
+                            One of the great masters Baba led me to is Sarma garu. His profound works—<a href="https://www.dasubhashitam.com/ab-title/ab-anveshana" target="_blank" style="color: #a0522d;">Anveshana</a> and <a href="https://www.dasubhashitam.com/ab-title/ab-arunaachalam-pilupu" target="_blank" style="color: #a0522d;">Rohith Sandehalau</a>—have been invaluable companions on this journey. His infinite patience and grace in answering my questions whenever I reach out has sustained and deepened my understanding, helping me continue walking this path with clarity and devotion.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="guru-card">
+                    <img src="images/yellamraju.png" alt="Yellamrajugaru" class="guru-image">
+                    <!-- If image not yet added, replace above line with: <div class="guru-image-placeholder">🙏</div> -->
+                    <div class="guru-info">
+                        <h3>Yellamrajugaru</h3>
+                        <p>
+                            Another extraordinary master who came into my awareness through Sarma gari's lectures and books. His <a href="https://advaitavedanta.in/index.html" target="_blank" style="color: #a0522d;">Advaita lectures</a> have made an inexplicable impression on my heart and mind. I have no words but profound gratitude—without these teachings, I would have been utterly lost in this vast ocean of knowledge, searching without direction.
+                        </p>
+                    </div>
+                </div>
+                <div class="guru-card">
+                    <img src="images/alanwatts.jpg" alt="Alan Watts" class="guru-image">
+                    <!-- If image not yet added, replace above line with: <div class="guru-image-placeholder">🙏</div> -->
+                    <div class="guru-info">
+                        <h3>Alan Watts</h3>
+                        <p>
+                            A bridge between Eastern wisdom and Western understanding, Alan Watts' eloquent articulation of Advaita and Zen philosophy opened doors of perception I didn't know existed. His ability to make the profound accessible, to illuminate ancient truths in contemporary language, has been instrumental in deepening my comprehension of non-dual awareness and the nature of consciousness itself.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="guru-card">
+                    <img src="images/shankara.jpg" alt="Adi Shankaracharya" class="guru-image">
+                    <!-- If image not yet added, replace above line with: <div class="guru-image-placeholder">🕉️</div> -->
+                    <div class="guru-info">
+                        <h3>Adi Shankaracharya</h3>
+                        <p>
+                            The great reviver of Advaita Vedanta, whose commentaries on the Upanishads, Brahma Sutras, and Bhagavad Gita form the very foundation upon which my understanding rests. Without his luminous expositions and profound philosophical clarity, I would have been lost in confusion. His works continue to illuminate the path to Self-realization, guiding seekers across the ages with timeless wisdom.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REFLECTIONS TAB -->
+        <div id="articles" class="tab-content">
+            <h2 style="color: #8b4513; margin-bottom: 20px; font-size: 2em;">My Reflections & Journey</h2>
+            <p style="color: #666; margin-bottom: 30px; font-size: 1.1em; font-style: italic;">
+                A space where I document concepts I'm learning, clarifying my understanding through writing. If these reflections help fellow seekers along the way, that is a welcome blessing.
+            </p>
+            <div class="resource-list">
+                <div class="resource-item">
+                    <a href="articles/SivaManasaPooja.pdf" target="_blank">📖 Shiva Manasa Puja</a>
+                    <div class="resource-description">Mental worship of Lord Shiva</div>
+                </div>
+                
+                <!-- Add more PDFs or HTML articles here -->
+                <!-- For PDFs:
+                <div class="resource-item">
+                    <a href="articles/filename.pdf" target="_blank">📖 Title</a>
+                    <div class="resource-description">Brief description</div>
+                </div>
+                -->
+                <!-- For HTML articles:
+                <div class="resource-item">
+                    <a href="articles/article-name.html">✍️ Article Title</a>
+                    <div class="resource-description">Brief description</div>
+                </div>
+                -->
+            </div>
+        </div>
+
+        <!-- CONTACT TAB -->
+        <div id="contact" class="tab-content">
+            <div class="contact-section">
+                <div class="om-symbol">🕉️</div>
+                <h2>Get in Touch</h2>
+                <p style="font-size: 1.1em; color: #666; margin-bottom: 30px;">
+                    Feel free to reach out
+                </p>
+                <div class="contact-info">
+                    <a href="mailto:satchitanandablog@gmail.com">📧 satchitanandablog@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            // Hide all tab contents
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            // Remove active class from all tabs
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+
+            // Show current tab and mark button as active
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html>
