@@ -2,22 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://satchitananda-way.github.io/</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://satchitananda-way.github.io/articles/SivaManasaPooja.pdf</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://satchitananda-way.github.io/articles/AdvaitaGist.pdf</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://satchitananda-way.github.io/articles/dance_of_doership.html</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://satchitananda-way.github.io/articles/undifferentiable_absolute.html</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://satchitananda-way.github.io/articles/shiva-manasa-puja-viewer.html</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://satchitananda-way.github.io/articles/advaita-gist-viewer.html</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
