@@ -344,7 +344,6 @@
                 
                 <div class="guru-card">
                     <img src="images/baba.jpg" alt="Shirdi Sai Baba" class="guru-image">
-                    <!-- If image not yet added, replace above line with: <div class="guru-image-placeholder">🙏</div> -->
                     <div class="guru-info">
                         <h3>Shirdi Sai Baba</h3>
                         <p>
@@ -355,7 +354,6 @@
 
                 <div class="guru-card">
                     <img src="images/sarma.png" alt="Poduri Venkataramana Sarma" class="guru-image">
-                    <!-- If image not yet added, replace above line with: <div class="guru-image-placeholder">🙏</div> -->
                     <div class="guru-info">
                         <h3>Poduri Venkataramana Sarma</h3>
                         <p>
@@ -366,7 +364,6 @@
 
                 <div class="guru-card">
                     <img src="images/yellamraju.png" alt="Yellamrajugaru" class="guru-image">
-                    <!-- If image not yet added, replace above line with: <div class="guru-image-placeholder">🙏</div> -->
                     <div class="guru-info">
                         <h3>Yellamrajugaru</h3>
                         <p>
@@ -376,7 +373,6 @@
                 </div>
                 <div class="guru-card">
                     <img src="images/alanwatts.jpg" alt="Alan Watts" class="guru-image">
-                    <!-- If image not yet added, replace above line with: <div class="guru-image-placeholder">🙏</div> -->
                     <div class="guru-info">
                         <h3>Alan Watts</h3>
                         <p>
@@ -387,7 +383,6 @@
 
                 <div class="guru-card">
                     <img src="images/shankara.jpg" alt="Adi Shankaracharya" class="guru-image">
-                    <!-- If image not yet added, replace above line with: <div class="guru-image-placeholder">🕉️</div> -->
                     <div class="guru-info">
                         <h3>Adi Shankaracharya</h3>
                         <p>
@@ -406,21 +401,13 @@
             </p>
             <div class="resource-list">
                 <div class="resource-item">
-                    <a href="articles/SivaManasaPooja.pdf" target="_blank">📖 Shiva Manasa Puja</a>
+                    <a href="articles/shiva-manasa-puja-viewer.html">📖 Shiva Manasa Puja</a>
                     <div class="resource-description">Mental worship of Lord Shiva</div>
                 </div>
                 <div class="resource-item">
-                    <a href="articles/AdvaitaGist.pdf" target="_blank">📖 Essence of Advaita</a>
+                    <a href="articles/advaita-gist-viewer.html">📖 Essence of Advaita</a>
                     <div class="resource-description">Essence of Advaita</div>
                 </div>
-                
-                <!-- Add more PDFs or HTML articles here -->
-                <!-- For PDFs:
-                <div class="resource-item">
-                    <a href="articles/filename.pdf" target="_blank">📖 Title</a>
-                    <div class="resource-description">Brief description</div>
-                </div>
-                -->
                 <div class="resource-item">
                     <a href="articles/dance_of_doership.html">✍️ Dance of Doership</a>
                     <div class="resource-description">A Short Play</div>
@@ -429,7 +416,6 @@
                     <a href="articles/undifferentiable_absolute.html">✍️ Undifferentiable Absolute</a>
                     <div class="resource-description">An Analogy</div>
                 </div>
-               
             </div>
         </div>
 
@@ -450,19 +436,14 @@
 
     <script>
         function openTab(evt, tabName) {
-            // Hide all tab contents
             var tabContents = document.getElementsByClassName("tab-content");
             for (var i = 0; i < tabContents.length; i++) {
                 tabContents[i].classList.remove("active");
             }
-
-            // Remove active class from all tabs
             var tabs = document.getElementsByClassName("tab");
             for (var i = 0; i < tabs.length; i++) {
                 tabs[i].classList.remove("active");
             }
-
-            // Show current tab and mark button as active
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
